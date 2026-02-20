@@ -1,0 +1,90 @@
+[
+  {
+    "slug": "eeg-signal-generator",
+    "title": "EEG Signal Generator",
+    "description": "Generative AI models (GAN, VAE, Diffusion) for synthesizing realistic EEG brain signals. Trained on neuroscience datasets with ARM-optimized ONNX inference on Raspberry Pi.",
+    "tags": "AI/ML,Neuroscience,GAN,VAE,Diffusion,ONNX",
+    "tier": 1,
+    "order": 1,
+    "github_url": null,
+    "demo_url": "/demo/eeg",
+    "image_url": null
+  },
+  {
+    "slug": "medical-chatbot",
+    "title": "Medical Research Chatbot",
+    "description": "RAG-powered chatbot that retrieves and summarizes medical research from PubMed. Uses embedding search and LLM generation with quantized models.",
+    "tags": "AI/ML,NLP,RAG,LLM,Healthcare",
+    "tier": 1,
+    "order": 2,
+    "github_url": null,
+    "demo_url": "/demo/chatbot",
+    "image_url": null
+  },
+  {
+    "slug": "text-ocr",
+    "title": "Handwritten Text Recognition",
+    "description": "CNN + BiLSTM handwritten text line recognizer trained on the IAM Handwriting Dataset. Uses CTC decoding with per-character confidence scores. Exported to ONNX with INT8 quantization for efficient inference on Raspberry Pi.",
+    "tags": "AI/ML,Computer Vision,CNN,LSTM,ONNX,Handwriting",
+    "tier": 1,
+    "order": 3,
+    "github_url": null,
+    "demo_url": "/demo/ocr",
+    "image_url": null
+  },
+  {
+    "slug": "bomberman-rl",
+    "title": "Bomberman RL Agent",
+    "description": "Reinforcement learning agent trained to play Bomberman. Watch the agent navigate mazes, place bombs strategically, and avoid explosions in real-time.",
+    "tags": "AI/ML,Reinforcement Learning,Gaming,PyTorch",
+    "tier": 1,
+    "order": 4,
+    "github_url": null,
+    "demo_url": "/demo/bomberman",
+    "image_url": null
+  },
+  {
+    "slug": "portfolio-site",
+    "title": "This Portfolio Website",
+    "description": "Full-stack portfolio hosted on a Raspberry Pi 4. React frontend, FastAPI backend, Nginx reverse proxy, Cloudflare tunnel — all running on a $55 ARM computer.",
+    "tags": "Full-Stack,React,FastAPI,Raspberry Pi,DevOps",
+    "tier": 2,
+    "order": 1,
+    "github_url": null,
+    "demo_url": null,
+    "image_url": null
+  },
+  {
+    "slug": "neural-data-analysis",
+    "title": "Neural Data Analysis Toolkit",
+    "description": "Python toolkit for processing and analyzing neural recording data. Includes spike sorting, spectral analysis, and visualization utilities for neuroscience research.",
+    "tags": "Neuroscience,Python,Data Analysis,Signal Processing",
+    "tier": 2,
+    "order": 2,
+    "github_url": null,
+    "demo_url": null,
+    "image_url": null
+  },
+  {
+    "slug": "ml-model-optimizer",
+    "title": "ML Model Optimizer for ARM",
+    "description": "Pipeline for quantizing and optimizing ML models for ARM deployment. Supports ONNX and TFLite with INT8 quantization and benchmarking on Raspberry Pi.",
+    "tags": "AI/ML,Optimization,ONNX,TFLite,ARM",
+    "tier": 2,
+    "order": 3,
+    "github_url": null,
+    "demo_url": null,
+    "image_url": null
+  },
+  {
+    "slug": "research-paper-tracker",
+    "title": "Research Paper Tracker",
+    "description": "CLI tool for tracking, annotating, and organizing research papers. Integrates with arXiv and PubMed APIs for automatic metadata retrieval.",
+    "tags": "Python,CLI,Research,API",
+    "tier": 2,
+    "order": 4,
+    "github_url": null,
+    "demo_url": null,
+    "image_url": null
+  }
+]
