@@ -1,0 +1,18 @@
+[
+  {
+    "file": "sample_1.png",
+    "expected": "A move to stop Mr. Gaitskell from"
+  },
+  {
+    "file": "sample_2.png",
+    "expected": "nominating any more Labour life Peers"
+  },
+  {
+    "file": "sample_3.png",
+    "expected": "is to be made at a meeting of Labour"
+  },
+  {
+    "file": "sample_4.png",
+    "expected": "Members of Parliament tomorrow."
+  }
+]
