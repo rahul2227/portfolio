@@ -1,0 +1,33 @@
+[Unit]
+Description=Cloudflare Quick Tunnel for Portfolio
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rahser
+Group=rahser
+
+# Quick tunnel mode — generates a random trycloudflare.com URL
+ExecStart=/usr/local/bin/cloudflared tunnel --url http://localhost:80
+
+# Restart on failure with 5-second delay
+Restart=on-failure
+RestartSec=5
+
+# Resource limits
+MemoryMax=128M
+
+# Security hardening
+ProtectHome=read-only
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cloudflared-portfolio
+
+[Install]
+WantedBy=multi-user.target

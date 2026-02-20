@@ -1,0 +1,36 @@
+[Unit]
+Description=Portfolio FastAPI Backend
+After=network.target redis-server.service
+Wants=redis-server.service
+
+[Service]
+Type=simple
+User=rahser
+Group=rahser
+WorkingDirectory=/home/rahser/portfolio/backend
+
+# Start uvicorn with 2 workers for the Pi's 4 cores
+ExecStart=/home/rahser/portfolio/backend/.venv/bin/uvicorn portfolio_api.main:app --host 127.0.0.1 --port 8000 --workers 2
+
+# Restart on failure with 5-second delay
+Restart=on-failure
+RestartSec=5
+
+# Resource limits to prevent OOM
+MemoryMax=256M
+CPUQuota=50%
+
+# Security hardening
+ProtectHome=read-only
+ReadWritePaths=/home/rahser/portfolio/backend/data
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=portfolio-backend
+
+[Install]
+WantedBy=multi-user.target

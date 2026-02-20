@@ -1,0 +1,46 @@
+[Unit]
+Description=Portfolio Handwritten Text Recognition Demo
+# Only requires network — no redis dependency for this demo
+After=network.target
+
+[Service]
+Type=simple
+User=rahser
+Group=rahser
+WorkingDirectory=/home/rahser/portfolio/demos/text-ocr
+
+# Launch Streamlit on a dedicated port with base URL matching the Nginx route.
+# --server.headless=true suppresses the browser-open prompt on Pi.
+# --server.enableCORS=false lets Nginx handle CORS at the proxy layer.
+# --server.maxUploadSize=5 caps uploads at 5 MB to protect Pi RAM.
+ExecStart=/home/rahser/portfolio/demos/text-ocr/.venv/bin/streamlit run app.py \
+    --server.port=8502 \
+    --server.headless=true \
+    --server.baseUrlPath=/demo/ocr \
+    --server.enableCORS=false \
+    --server.maxUploadSize=5
+
+# Restart on failure with 5-second delay
+Restart=on-failure
+RestartSec=5
+
+# Resource limits — OCR model is larger than backend; 512 M covers ONNX INT8 model
+# in memory plus Streamlit overhead. CPUQuota leaves headroom for other services.
+MemoryMax=512M
+CPUQuota=75%
+
+# Security hardening — mirrors backend service policy
+ProtectHome=read-only
+# Demo dir needs write access for Streamlit's temp uploads and model cache
+ReadWritePaths=/home/rahser/portfolio/demos/text-ocr
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=portfolio-demo-ocr
+
+[Install]
+WantedBy=multi-user.target
