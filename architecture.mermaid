@@ -1,0 +1,59 @@
+graph TB
+    subgraph Internet
+        Visitor["Visitor Browser"]
+        CF["Cloudflare Free Tier - DNS + CDN + SSL + DDoS"]
+    end
+
+    subgraph RaspberryPi["Raspberry Pi 4 - 4GB RAM"]
+        CFD["cloudflared daemon"]
+
+        subgraph Proxy["Nginx Reverse Proxy"]
+            R1["/ --> Frontend"]
+            R2["/api --> FastAPI"]
+            R3["/demo --> Streamlit Apps"]
+        end
+
+        subgraph Frontend["Frontend - Static Files"]
+            React["React + Vite SPA - Portfolio UI"]
+        end
+
+        subgraph Backend["FastAPI Backend :8000"]
+            API["REST API - metadata, contact, health, rate-limit"]
+        end
+
+        subgraph Demos["Interactive ML Demos"]
+            S1["Streamlit :8501 - EEG Generator - GAN/VAE/Diffusion"]
+            S2["Streamlit :8502 - Medical Chatbot - PubMed Retrieval"]
+            S3["Streamlit :8503 - Text OCR - Upload Image"]
+            S4["Streamlit :8504 - Bomberman RL - Watch Agent Play"]
+        end
+
+        subgraph Models["ML Model Store"]
+            ONNX["ONNX Runtime - ARM optimized"]
+            TFL["TFLite Models"]
+            Q["INT8 Quantized Weights"]
+        end
+
+        subgraph Data["Data Layer"]
+            SQLite["SQLite - metadata, contacts"]
+            Redis["Redis - cache, rate limits"]
+        end
+
+        subgraph Sys["System Services"]
+            SD["systemd - process manager"]
+            Mon["Health Monitor + UptimeRobot"]
+        end
+    end
+
+    Visitor <-->|HTTPS 443| CF
+    CF <-->|Secure Tunnel - no inbound ports| CFD
+    CFD --> Proxy
+    Proxy --> Frontend
+    Proxy --> Backend
+    Proxy --> Demos
+    Demos --> Models
+    Backend --> Data
+    SD -.->|manages| Backend
+    SD -.->|manages| Demos
+    SD -.->|manages| CFD
+    Mon -.->|watches| SD
