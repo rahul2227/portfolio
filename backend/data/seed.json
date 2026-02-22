@@ -8,7 +8,7 @@
     "tier": 1,
     "order": 1,
     "github_url": null,
-    "demo_url": "/demo/eeg",
+    "demo_url": null,
     "image_url": null
   },
   {
@@ -20,7 +20,7 @@
     "tier": 1,
     "order": 2,
     "github_url": null,
-    "demo_url": "/demo/chatbot",
+    "demo_url": null,
     "image_url": null
   },
   {
@@ -44,7 +44,7 @@
     "tier": 1,
     "order": 4,
     "github_url": null,
-    "demo_url": "/demo/bomberman",
+    "demo_url": null,
     "image_url": null
   },
   {

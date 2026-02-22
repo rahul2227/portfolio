@@ -16,6 +16,12 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    '<a href="/projects/text-ocr" style="color: #a1a1aa; text-decoration: none; font-size: 0.875rem;">'
+    "&larr; Back to Project</a>",
+    unsafe_allow_html=True,
+)
+
 # Sidebar — model card
 with st.sidebar:
     st.header("Model Card")
