@@ -24,11 +24,14 @@ async def seed() -> None:
             result = await session.execute(
                 select(Project).where(Project.slug == item["slug"])
             )
-            if result.scalar_one_or_none() is None:
+            existing = result.scalar_one_or_none()
+            if existing is None:
                 session.add(Project(**item))
                 print(f"  Added: {item['title']}")
             else:
-                print(f"  Skipped (exists): {item['title']}")
+                for key, value in item.items():
+                    setattr(existing, key, value)
+                print(f"  Updated: {item['title']}")
         await session.commit()
 
     print(f"\nSeeded {len(projects_data)} projects.")
