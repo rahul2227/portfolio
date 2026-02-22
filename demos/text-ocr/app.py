@@ -17,7 +17,14 @@ st.set_page_config(
 )
 
 st.markdown(
-    '<a href="/projects/text-ocr" style="color: #a1a1aa; text-decoration: none; font-size: 0.875rem;">'
+    '<a href="/projects/text-ocr" style="'
+    "display: inline-flex; align-items: center; gap: 6px; "
+    "padding: 6px 14px; border-radius: 8px; "
+    "background: rgba(99,102,241,0.12); "
+    "color: #818cf8; font-weight: 500; font-size: 0.875rem; "
+    "text-decoration: none; border: 1px solid rgba(99,102,241,0.25); "
+    "transition: background 0.2s;"
+    '">'
     "&larr; Back to Project</a>",
     unsafe_allow_html=True,
 )
