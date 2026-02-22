@@ -38,12 +38,12 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-lg bg-green-50 p-6 text-center">
-        <p className="text-green-800 font-medium">Message sent successfully!</p>
+      <div className="bg-success/10 border border-success/20 rounded-lg p-6 text-center">
+        <p className="text-success font-medium">Message sent successfully!</p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-4 text-sm text-green-700 underline hover:text-green-800"
+          className="mt-4 text-sm text-success/80 underline hover:text-success"
         >
           Send another message
         </button>
@@ -54,7 +54,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="name" className="block text-sm font-medium text-text-secondary">
           Name
         </label>
         <input
@@ -63,13 +63,13 @@ export function ContactForm() {
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-lg border bg-bg-secondary border-border px-4 py-3 text-text-primary placeholder-text-muted focus:border-accent focus:ring-1 focus:ring-accent/20"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="block text-sm font-medium text-text-secondary">
           Email
         </label>
         <input
@@ -78,13 +78,13 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-lg border bg-bg-secondary border-border px-4 py-3 text-text-primary placeholder-text-muted focus:border-accent focus:ring-1 focus:ring-accent/20"
           placeholder="you@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="message" className="block text-sm font-medium text-text-secondary">
           Message
         </label>
         <textarea
@@ -93,19 +93,19 @@ export function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-y"
+          className="mt-1 block w-full rounded-lg border bg-bg-secondary border-border px-4 py-3 text-text-primary placeholder-text-muted focus:border-accent focus:ring-1 focus:ring-accent/20 resize-y"
           placeholder="What would you like to discuss?"
         />
       </div>
 
       {status === 'error' && (
-        <p className="text-sm text-red-600" role="alert">{errorMessage}</p>
+        <p className="text-sm text-error" role="alert">{errorMessage}</p>
       )}
 
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="w-full sm:w-auto px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors disabled:bg-accent/50 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {status === 'submitting' ? 'Sending...' : 'Send Message'}
       </button>

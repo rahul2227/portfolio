@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ProjectCard } from '../components/ProjectCard'
 import type { ProjectCardProps } from '../components/ProjectCard'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function Projects() {
+  useDocumentTitle('Projects')
+
   const [projects, setProjects] = useState<ProjectCardProps[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -32,7 +35,7 @@ export function Projects() {
   if (loading) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <p className="text-gray-500">Loading projects...</p>
+        <p className="text-text-muted">Loading projects...</p>
       </div>
     )
   }
@@ -40,7 +43,7 @@ export function Projects() {
   if (error) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <p className="text-red-600">{error}</p>
+        <p className="text-error">{error}</p>
       </div>
     )
   }
@@ -48,8 +51,8 @@ export function Projects() {
   return (
     <section className="py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900">Projects</h1>
-        <p className="mt-2 text-gray-600">AI/ML projects and tools I&apos;ve built.</p>
+        <h1 className="text-3xl font-bold font-display text-text-primary">Projects</h1>
+        <p className="mt-2 text-text-secondary">AI/ML projects and tools I&apos;ve built.</p>
 
         {/* Tag filter */}
         <div className="mt-8 flex flex-wrap gap-2">
@@ -58,8 +61,8 @@ export function Projects() {
             onClick={() => setSelectedTag(null)}
             className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
               selectedTag === null
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-accent text-white'
+                : 'bg-bg-secondary text-text-secondary border border-border hover:bg-bg-tertiary'
             }`}
           >
             All
@@ -71,8 +74,8 @@ export function Projects() {
               onClick={() => setSelectedTag(tag)}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                 selectedTag === tag
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-accent text-white'
+                  : 'bg-bg-secondary text-text-secondary border border-border hover:bg-bg-tertiary'
               }`}
             >
               {tag}

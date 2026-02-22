@@ -13,11 +13,11 @@ export function Navbar() {
   const location = useLocation()
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <nav className="sticky top-0 z-50 bg-bg-primary/80 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-gray-900">
-            Portfolio
+          <Link to="/" className="text-xl font-bold font-display text-text-primary">
+            Rahul Sharma
           </Link>
 
           {/* Desktop nav */}
@@ -26,10 +26,10 @@ export function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                className={`text-sm font-medium transition-colors hover:text-accent ${
                   location.pathname === link.to
-                    ? 'text-blue-600'
-                    : 'text-gray-600'
+                    ? 'text-accent'
+                    : 'text-text-secondary'
                 }`}
               >
                 {link.label}
@@ -40,7 +40,7 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             type="button"
-            className="sm:hidden p-2 text-gray-600 hover:text-gray-900"
+            className="sm:hidden p-2 text-text-secondary hover:text-text-primary"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
@@ -65,8 +65,8 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-sm font-medium ${
                   location.pathname === link.to
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-text-secondary hover:bg-bg-tertiary'
                 }`}
               >
                 {link.label}
